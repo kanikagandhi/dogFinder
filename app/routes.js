@@ -1,7 +1,4 @@
-module.exports = function(app, io, mongo, passport) {
-    
-    app.get('/', home);
-    app.get('/home', home);
+module.exports = function(app, passport) {
 
     app.get('/login', function(req, res) {
         // render the page and pass in any flash data if it exists
@@ -77,17 +74,6 @@ module.exports = function(app, io, mongo, passport) {
             })
 
         });
-    });
-
-        obj = req.user;
-        delete obj.password;
-        res.render('profile', {
-            user : obj,
-            OtherAccount : false,
-            isLoggedIn : req.isAuthenticated(),
-            query_var: req.query.id
-        });
-
     });
 
     app.get('/logout', function(req, res) {

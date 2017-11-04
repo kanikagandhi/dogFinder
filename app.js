@@ -8,7 +8,6 @@ var cookies 	  = require('cookie-parser');
 var formidable 	= require('express-formidable');
 var validator	  = require('express-validator');
 var session     = require('express-session');
-var io 			    = require('socket.io')();
 
 var port 		    = process.env.PORT || 8080;
 
@@ -55,10 +54,10 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 app.set('mongoUrl','mongodb://localhost:27017/netcode');
 
-io.listen(app.listen(port,"0.0.0.0",function (err) {
+app.listen(port,"0.0.0.0",function (err) {
 	if(err)
 		console.log(err);
 	app.port = port;
-}));
+});
 
-require('./app/routes.js')(app, io, mongo, passport);
+require('./app/routes.js')(app, passport);
