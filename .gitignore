@@ -1,5 +1,3 @@
 /node_modules
-/tmpfiles
 /.vscode
-npm-debug.log
 package-lock.json
